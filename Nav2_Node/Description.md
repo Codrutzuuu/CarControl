@@ -12,7 +12,7 @@ Nav2 is the next-generation navigation stack for the Robot Operating System 2 (R
 - **Global Path Planning**: Computes optimal paths from a starting point to a goal using algorithms like A* or Dijkstra's algorithm.
 - **Costmaps**: Maintains layered costmaps (static, obstacle, inflation) to represent the environment and guide navigation decisions.
 - **Behavior Trees**: Utilizes behavior trees for managing complex navigation tasks and recovery behaviors when the robot gets stuck.
-- **Multi-Robot Support**: Designed to handle navigation for multiple robots in a shared environment.
+- **Multi-Robot Support**: Designed to handle navigation for multiple robots in a shared environment. 
 
 ## Core Components
 
