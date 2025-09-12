@@ -1,4 +1,4 @@
-# How to use Nav2 - make the robot to work
+# How to use Nav2 - Make the robot work
 
 ## Launch the robot
 
@@ -64,6 +64,24 @@ The local costmap provides a short-term, rolling window representation used for 
 
 1. Estimate the position
    ![Estimate](/Nav2_Node/img/Estimate.png)
+
+   ![Estimate_w_arrow](/Nav2_Node/img/EstimatePosition.png)
+
 2. Send a goal
    ![Send Goal](/Nav2_Node/img/SendGoal.png)
+   ![Send_w_arrow](/Nav2_Node/img/GoalArrow.png)
+
+   ## Basically, the base of the arrow represent the final position you want the robot to go to and the arrow tip suggest the orrientation
+
 3. You wil see a trajectory
+
+In order to see this, you have to acces Rviz topics and to select the /plan topic
+
+![Topics](/Nav2_Node/img/RvizTopics.png)
+
+from that panel you can see every topic you use or you need. Please follow some tutorials in order to understand how ROS2 works
+
+## Recommended and mandatory sources (just press on text)
+
+1. [Ros2 Official Tutorials - your new Bible during Summer Practice](https://docs.ros.org/en/humble/Tutorials.html)
+2. [ROS2 Tutorial - this is the best on Youtube and is free, and it is exactly what you need - he builds a differential robot](https://www.youtube.com/watch?v=OWeLUSzxMsw&list=PLunhqkrRNRhYAffV8JDiFOatQXuU-NnxT)

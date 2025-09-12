@@ -14,7 +14,7 @@ sudo apt install ros-humble-ros2-control ros-humble-ros2-controllers
 ## Learning resource
 
 To understand how ros2_control works, watch this comprehensive course:
-[Ros2 Control Course](https://youtu.be/B9SbYjQSBY8?si=dmxxUANcyLlxqE-z) - required time - 2 hours, but it definetly worth it
+[Ros2 Control Course](https://youtu.be/B9SbYjQSBY8?si=dmxxUANcyLlxqE-z) - Estimated time: 2 hours, but it is definitely worth it
 
 ## Architecture Overview
 
@@ -90,3 +90,21 @@ In this urdf file, you have the configuration of the hardware interface that all
 ``` bash
 ls /dev/tty*
 ```
+
+Dacă Arduino nu este detectat pe `/dev/ttyACM0`, verificați portul corect folosind comanda de mai jos și actualizați parametrul `device` în consecință.
+
+## Explanation of PID Parameters in ros2_control Configuration - from official ros2_control source 
+
+The parameters listed in the URDF configuration file are related to the PID (Proportional-Integral-Derivative) controller used for motor control in the `ros2_control` framework. These parameters tune the behavior of the controller to achieve precise and stable movement of the robot's wheels. Below is an explanation of each parameter:
+
+- **`<param name="pid_p">100</param>`**:
+  - **Proportional Gain (P)**: This parameter determines the reaction to the current error (the difference between the desired and actual velocity or position). A higher value makes the system respond more aggressively to errors, but if set too high, it can cause overshooting or oscillations. A value of `100` indicates a strong proportional response to correct errors quickly.
+
+- **`<param name="pid_d">30</param>`**:
+  - **Derivative Gain (D)**: This parameter controls the reaction to the rate of change of the error. It helps to dampen the system and reduce overshooting by predicting future error based on its current rate of change. A value of `30` suggests a moderate damping effect to stabilize the response and prevent rapid oscillations.
+
+- **`<param name="pid_i">0</param>`**:
+  - **Integral Gain (I)**: This parameter addresses the accumulated error over time, helping to eliminate steady-state errors (e.g., when the robot is consistently slightly off the target). A value of `0` means the integral component is disabled, likely to avoid issues like windup (where accumulated error causes overcorrection) or because the system doesn't require correction for persistent small errors.
+
+- **`<param name="pid_o">60</param>`**:
+  - **Output Limit (O)**: This parameter sets the maximum output value that the PID controller can send to the motor (likely related to PWM or speed command). A value of `60` limits the controller's output to prevent excessive speed or torque that could damage the hardware or cause instability. It acts as a safety cap on the control signal.
